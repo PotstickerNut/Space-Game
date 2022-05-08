@@ -16,8 +16,28 @@ button {
   margin: 20px;
 }
 
+#fire {
+  border: none;
+  background-color: #76d473;
+  box-shadow: 1px 4px 12px #888;
+}
+
+#fire:hover {
+  background-color: #76d473c8;
+  box-shadow: none;
+}
+
 #reset {
   margin-left: 20px;
+  border: none;
+  background-color: #d47373;
+  color: #fff;
+  box-shadow: 1px 4px 12px #888;
+}
+
+#reset:hover {
+  background-color: #d47373c8;
+  box-shadow: none;
 }
 
 .main-wrapper {
@@ -25,6 +45,7 @@ button {
   width: 95vw;
   margin: 0 auto;
   text-align: center;
+  box-shadow: -5px 0 15px 1px #888, 5px 0 15px 1px #888;
 }
 
 .game-status {
@@ -47,6 +68,15 @@ button {
 .retreat {
   padding: 5px;
   margin: 8px 5px 0 5px;
+  border: none;
+  background-color: #d47373;
+  color: #fff;
+  box-shadow: 1px 4px 12px #888;
+}
+
+.retreat:hover {
+  background-color: #d47373c8;
+  box-shadow: none;
 }
 
 .you-won {
