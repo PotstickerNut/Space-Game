@@ -77,6 +77,23 @@ const alienFire = () => {
   }
 };
 
+// retreat button function
+const retreat = () => {
+  // declare elements
+  if (playing) {
+    const mainWrapper = document.querySelector(".main-wrapper");
+    const div = document.createElement("div");
+
+    // add class names
+    div.className = "game-status retreat";
+
+    //append elements
+    mainWrapper.appendChild(div);
+    div.textContent = "RETREAT!!!";
+    playing = false;
+  }
+};
+
 // USS fire
 const ussFire = () => {
   if (playing) {
@@ -97,22 +114,29 @@ const ussFire = () => {
       if (alienShip.hull <= 0) {
         // create element
         const div2 = document.createElement("div");
+        const retreatBtn = document.createElement("button");
 
         // append element
         mainWrapper.appendChild(div2);
+        mainWrapper.appendChild(retreatBtn);
 
         // add class
         div2.className = "game-status generate-ship";
+        retreatBtn.className = "game-status retreat";
+        retreatBtn.textContent = "RETREAT!!";
+        retreatBtn.addEventListener("click", retreat);
 
         console.log("Ship has gone down!");
         div2.textContent = "Ship has gone down!";
+
         alienShip = generateShip();
+        alienFire();
       }
     } else {
       console.log("Missed alien target!");
       div1.textContent = "Missed alien target!";
+      alienFire();
     }
-    alienFire();
   }
 };
 

@@ -44,6 +44,11 @@ button {
   background-color: #d4a373;
 }
 
+.retreat {
+  padding: 5px;
+  margin: 8px 5px 0 5px;
+}
+
 .you-won {
   background-color: #b3d5ae;
 }
