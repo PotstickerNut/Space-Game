@@ -61,17 +61,18 @@ const alienFire = () => {
         console.log("USS Hello World has been hit!");
         ussHelloWorld.hull -= alienShip.firepower;
         div1.textContent = `USS Hello World has been hit! Hull: ${ussHelloWorld.hull}`;
+        if (ussHelloWorld.hull <= 0) {
+          console.log("You loose!");
+          const div2 = document.createElement("div");
+          mainWrapper.appendChild(div2);
+          div2.className = "game-status you-loose";
+          div2.textContent = "You loose!";
+          playing = false;
+        }
       } else {
         console.log("Missed USS Hello World target!");
         div1.textContent = "Missed USS Hello World target!";
       }
-    } else {
-      console.log("You loose!");
-      const div2 = document.createElement("div");
-      mainWrapper.appendChild(div2);
-      div2.className = "game-status you-loose";
-      div2.textContent = "You loose!";
-      playing = false;
     }
   }
 };
@@ -83,20 +84,26 @@ const ussFire = () => {
     const mainWrapper = document.querySelector(".main-wrapper");
     // create elements
     const div1 = document.createElement("div");
-    const div2 = document.createElement("div");
 
     // append elements
     mainWrapper.appendChild(div1);
-    mainWrapper.appendChild(div2);
 
     // add class to elements
     div1.className = "game-status uss-fire";
-    div2.className = "game-status generate-ship";
     if (Math.random() < ussHelloWorld.accuracy) {
       console.log("Alien has been hit!");
       alienShip.hull -= ussHelloWorld.firepower;
       div1.textContent = `Alien has been hit! Hull: ${alienShip.hull}`;
       if (alienShip.hull <= 0) {
+        // create element
+        const div2 = document.createElement("div");
+
+        // append element
+        mainWrapper.appendChild(div2);
+
+        // add class
+        div2.className = "game-status generate-ship";
+
         console.log("Ship has gone down!");
         div2.textContent = "Ship has gone down!";
         alienShip = generateShip();
