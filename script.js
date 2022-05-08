@@ -100,12 +100,12 @@ const ussFire = () => {
         console.log("Ship has gone down!");
         div2.textContent = "Ship has gone down!";
         alienShip = generateShip();
-      } else {
-        console.log("Missed alien target!");
-        div1.textContent = "Missed alien target!";
       }
-      alienFire();
+    } else {
+      console.log("Missed alien target!");
+      div1.textContent = "Missed alien target!";
     }
+    alienFire();
   }
 };
 
@@ -115,7 +115,7 @@ const reset = () => {
   divs.forEach((div) => {
     div.remove();
   });
-  console.log(divs);
+
   playing = true;
   count = 6;
   alienShip = generateShip();
