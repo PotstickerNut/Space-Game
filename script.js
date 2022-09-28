@@ -18,6 +18,7 @@ class Ship {
 
 const generateShip = () => {
   if (count > 0) {
+    // Math.trunc(Math.random() * Max - min) + min;
     const hull = Math.trunc(Math.random() * 3) + 3;
     const firepower = Math.trunc(Math.random() * 3) + 2;
     const accuracy = parseFloat(Math.random() * (0.8 - 0.6) + 0.6).toFixed(1);

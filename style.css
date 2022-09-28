@@ -16,6 +16,13 @@ button {
   margin: 20px;
 }
 
+.header {
+  background-color: #faedcd;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
 #fire {
   border: none;
   background-color: #76d473;
