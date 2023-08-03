@@ -16,6 +16,12 @@ class Ship {
   }
 }
 
+// Latest round visible on screen
+window.setInterval(function () {
+  const latestRound = document.getElementsByClassName("game-status");
+  latestRound.scrollTop = latestRound.scrollHeight;
+}, 1);
+
 const generateShip = () => {
   if (count > 0) {
     // Math.trunc(Math.random() * Max - min) + min;
@@ -76,6 +82,8 @@ const alienFire = () => {
       }
     }
   }
+  // Latest round visible on screen
+  window.scrollTo(0, document.body.scrollHeight);
 };
 
 // retreat button function
