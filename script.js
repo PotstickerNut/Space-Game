@@ -42,8 +42,6 @@ const generateShip = () => {
 
     // add class to elements
     div.className = "game-status you-won";
-
-    console.log("You won!");
     div.textContent = "You won!";
 
     playing = false;
@@ -65,11 +63,9 @@ const alienFire = () => {
     div1.className = "game-status alien-fire";
     if (ussHelloWorld.hull > 0) {
       if (Math.random() < alienShip.accuracy) {
-        console.log("USS Hello World has been hit!");
         ussHelloWorld.hull -= alienShip.firepower;
         div1.textContent = `USS Hello World has been hit! Hull: ${ussHelloWorld.hull}`;
         if (ussHelloWorld.hull <= 0) {
-          console.log("You loose!");
           const div2 = document.createElement("div");
           mainWrapper.appendChild(div2);
           div2.className = "game-status you-loose";
@@ -77,7 +73,6 @@ const alienFire = () => {
           playing = false;
         }
       } else {
-        console.log("Missed USS Hello World target!");
         div1.textContent = "Missed USS Hello World target!";
       }
     }
@@ -117,7 +112,6 @@ const ussFire = () => {
     // add class to elements
     div1.className = "game-status uss-fire";
     if (Math.random() < ussHelloWorld.accuracy) {
-      console.log("Alien has been hit!");
       alienShip.hull -= ussHelloWorld.firepower;
       div1.textContent = `Alien has been hit! Hull: ${alienShip.hull}`;
       if (alienShip.hull <= 0) {
@@ -127,22 +121,25 @@ const ussFire = () => {
 
         // append element
         mainWrapper.appendChild(div2);
-        mainWrapper.appendChild(retreatBtn);
+        
 
         // add class
         div2.className = "game-status generate-ship";
-        retreatBtn.className = "game-status retreat";
-        retreatBtn.textContent = "RETREAT!!";
-        retreatBtn.addEventListener("click", retreat);
+        if (count != 0) {
+          // append retreat button
+          mainWrapper.appendChild(retreatBtn);
 
-        console.log("Ship has gone down!");
+          // add retreat button
+          retreatBtn.className = "game-status retreat";
+          retreatBtn.textContent = "RETREAT!!";
+          retreatBtn.addEventListener("click", retreat);
+        }
         div2.textContent = "Ship has gone down!";
 
         alienShip = generateShip();
         alienFire();
       }
     } else {
-      console.log("Missed alien target!");
       div1.textContent = "Missed alien target!";
       alienFire();
     }
